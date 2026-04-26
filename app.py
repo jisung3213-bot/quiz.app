@@ -627,10 +627,6 @@ def quiz_page():
 
             st.success("결과가 저장됐어. 첫 화면 순위표에 반영돼.")
 
-    if st.button("처음 화면으로 이동"):
-        st.session_state.page = "home"
-        st.rerun()
-
     if st.button("로그아웃"):
         st.session_state.logged_in = False
         st.session_state.current_user = None
