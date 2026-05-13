@@ -5,7 +5,7 @@ import re
 import os
 from datetime import datetime
 
-print(f"[LOG] App loaded at {datetime.now()}")
+
 
 st.title("Streamlit EC2 App")
 
@@ -351,6 +351,7 @@ def show_rankings():
                     if st.button("삭제", key=delete_key):
                         delete_ranking_record(subject, record["student_id"])
                         st.rerun()
+                        print(f"[LOG] delete quiz record at {datetime.now()}")
 
 
 # =========================
@@ -358,6 +359,7 @@ def show_rankings():
 # =========================
 def home_page():
     st.title("2023204077 박지성")
+    print(f"[LOG] App loaded at {datetime.now()}")
 
     st.write("")
     st.write("")
