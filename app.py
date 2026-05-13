@@ -349,9 +349,10 @@ def show_rankings():
                     delete_key = f"delete_{subject}_{record['student_id']}"
 
                     if st.button("삭제", key=delete_key):
+                        print(f"[LOG] delete quiz record at {datetime.now()}")
                         delete_ranking_record(subject, record["student_id"])
                         st.rerun()
-                        print(f"[LOG] delete quiz record at {datetime.now()}")
+                        
 
 
 # =========================
