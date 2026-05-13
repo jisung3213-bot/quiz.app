@@ -273,7 +273,6 @@ def render_text_or_latex(text):
 # =========================
 # 순위 저장 함수
 # =========================
-from datetime import datetime
 
 def save_result(subject, name, student_id, score, total):
     ranking_list = st.session_state.rankings[subject]
@@ -385,6 +384,8 @@ def signup_page():
     st.title("2023204077 박지성")
     st.subheader("회원가입")
 
+    print(f"[LOG] signup_page loaded at {datetime.now()}")
+
     name = st.text_input("이름을 입력하세요")
     student_id = st.text_input("학번을 입력하세요", placeholder="숫자 10자리")
     birth_date = st.text_input("생년월일을 입력하세요", placeholder="예: 041015")
@@ -424,6 +425,7 @@ def signup_page():
             })
 
             st.success("회원가입이 완료되었습니다.")
+            print(f"[LOG] signup completed at {datetime.now()}")
 
     if st.button("처음으로 돌아가기"):
         st.session_state.page = "home"
@@ -436,6 +438,8 @@ def signup_page():
 def login_page():
     st.title("2023204077 박지성")
     st.subheader("로그인")
+
+    print(f"[LOG] login_page loaded at {datetime.now()}")
 
     student_id = st.text_input("학번을 입력하세요", placeholder="숫자 10자리")
     password = st.text_input("비밀번호를 입력하세요", type="password")
@@ -451,6 +455,7 @@ def login_page():
             st.session_state.last_subject = None
             st.session_state.last_total = None
             st.rerun()
+            print(f"[LOG] login success at {datetime.now()}")
         else:
             st.error("잘못된 로그인입니다.")
 
@@ -495,6 +500,8 @@ def login_page():
 # =========================
 def quiz_page():
     st.title("퀴즈 - 시험이 끝나도 다시 복습하자")
+
+    print(f"[LOG] quiz active at {datetime.now()}")
 
     user = st.session_state.current_user
 
@@ -577,6 +584,7 @@ def quiz_page():
 
     if st.button("제출하기"):
         score = 0
+        print(f"[LOG] quiz submit at {datetime.now()}")
 
         for i, row in quiz_data.iterrows():
             correct_answer = str(row["answer"]).strip()
@@ -632,6 +640,7 @@ def quiz_page():
             )
 
             st.success("결과가 저장됐어. 첫 화면 순위표에 반영돼.")
+            print(f"[LOG] quiz data save success at {datetime.now()}")
 
     if st.button("로그아웃"):
         st.session_state.logged_in = False
@@ -641,6 +650,7 @@ def quiz_page():
         st.session_state.last_subject = None
         st.session_state.last_total = None
         st.rerun()
+        print(f"[LOG] logout at {datetime.now()}")
 
 
 # =========================
