@@ -3,6 +3,12 @@ import pandas as pd
 import json
 import re
 import os
+from datetime import datetime
+
+print(f"[LOG] App loaded at {datetime.now()}")
+
+st.title("Streamlit EC2 App")
+
 
 RANKING_FILE = "rankings.json"
 
